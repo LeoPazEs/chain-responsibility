@@ -2,6 +2,7 @@
 #include "userhandler.hpp"
 #include "loginhandler.hpp"
 #include "logouthandler.hpp"
+#include "abstractuserhandler.hpp"
 #include <iostream>
 #include <string>
 
@@ -17,11 +18,15 @@ int main()
     std::cin >> password;
 
     User user = User(username, password);
-    UserHandler userHandler = UserHandler(&user);
 
-    UserHandler login = userHandler.handler("login");
-    login.handle();
-    std::cout << "Username: " << user.getUsername() << std::endl;
+    LoginHandler *loginHandler = new LoginHandler(&user);
+    LogoutHandler *logoutHandler = new LogoutHandler(&user);
+
+    loginHandler->SetNext(logoutHandler);
+    std::cout << loginHandler->Handle("login");
+
+    delete loginHandler;
+    delete logoutHandler;
 
     return 0;
 }

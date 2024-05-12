@@ -1,8 +1,8 @@
 #include "logouthandler.hpp"
+#include <string>
 #include <iostream>
 
-void LogoutHandler::handle()
+std::string LogoutHandler::Handle(std::string request)
 {
-    std::cout << "Logging out" << user->getUsername() << std::endl;
-    exit(0);
+    return "Logging out " + user->getUsername() + ".\n";
 }

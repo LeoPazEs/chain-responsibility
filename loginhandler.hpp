@@ -1,14 +1,12 @@
 #include "user.hpp"
-#include "userhandler.hpp"
+#include <string>
+#include "abstractuserhandler.hpp"
 #if !defined(LOGIN_HANDLER_H)
 #define LOGIN_HANDLER_H
-class LoginHandler : public UserHandler
+class LoginHandler : public AbstractHandler
 {
 public:
-    using UserHandler::UserHandler;
-    void handle();
-
-private:
-    User *user;
+    using AbstractHandler::AbstractHandler;
+    std::string Handle(std::string request);
 };
 #endif // LOGIN_HANDLER_H

@@ -1,4 +1,5 @@
 #include "userhandler.hpp"
+#include "user.hpp"
 #include <string>
 #if !defined(ABSTRACH_USER_HANDLER_H)
 #define ABSTRACH_USER_HANDLER_H
@@ -7,9 +8,13 @@ class AbstractHandler : public UserHandler
 private:
     UserHandler *next_handler_;
 
+protected:
+    User *user;
+
 public:
-    AbstractHandler() : next_handler_(nullptr)
+    AbstractHandler(User *user) : next_handler_(nullptr)
     {
+        this->user = user;
     }
     UserHandler *SetNext(UserHandler *handler) override
     {
