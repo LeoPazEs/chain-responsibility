@@ -1,17 +1,17 @@
-#include "handler.hpp"
+#include "userhandler.hpp"
 #include <string>
-#if !defined(ABSTRACH_HANDLER_H)
-#define ABSTRACH_HANDLER_H
-class AbstractHandler : public Handler
+#if !defined(ABSTRACH_USER_HANDLER_H)
+#define ABSTRACH_USER_HANDLER_H
+class AbstractHandler : public UserHandler
 {
 private:
-    Handler *next_handler_;
+    UserHandler *next_handler_;
 
 public:
     AbstractHandler() : next_handler_(nullptr)
     {
     }
-    Handler *SetNext(Handler *handler) override
+    UserHandler *SetNext(UserHandler *handler) override
     {
         this->next_handler_ = handler;
         return handler;
@@ -26,4 +26,4 @@ public:
         return {};
     }
 };
-#endif // ABSTRACH_HANDLER_H
+#endif // ABSTRACH_USER_HANDLER_H

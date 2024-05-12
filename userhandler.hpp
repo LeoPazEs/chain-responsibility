@@ -1,16 +1,10 @@
-#include "user.hpp"
 #include <string>
-#ifndef USER_HANDLER_H
+#if !defined(USER_HANDLER_H)
 #define USER_HANDLER_H
 class UserHandler
 {
 public:
-    UserHandler(User *user);
-    void setUser(User *user);
-    UserHandler handler(std::string request);
-    void handle();
-
-private:
-    User *user;
+    virtual UserHandler *SetNext(UserHandler *handler) = 0;
+    virtual std::string Handle(std::string request) = 0;
 };
 #endif // USER_HANDLER_H
