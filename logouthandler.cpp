@@ -4,5 +4,12 @@
 
 std::string LogoutHandler::Handle(std::string request)
 {
-    return "Logging out " + user->getUsername() + ".\n";
+    if (request == "logout")
+    {
+        return "Logging out " + user->getUsername() + ".\n";
+    }
+    else
+    {
+        return AbstractHandler::Handle(request);
+    }
 }

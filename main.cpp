@@ -1,8 +1,7 @@
 #include "user.hpp"
-#include "userhandler.hpp"
 #include "loginhandler.hpp"
 #include "logouthandler.hpp"
-#include "abstractuserhandler.hpp"
+#include "registerhandler.hpp"
 #include <iostream>
 #include <string>
 
@@ -19,14 +18,20 @@ int main()
 
     User user = User(username, password);
 
+    std::string choice;
+
+    RegisterHandler *registerHandler = new RegisterHandler(&user);
     LoginHandler *loginHandler = new LoginHandler(&user);
     LogoutHandler *logoutHandler = new LogoutHandler(&user);
 
-    loginHandler->SetNext(logoutHandler);
-    std::cout << loginHandler->Handle("login");
+    registerHandler->SetNext(loginHandler)->SetNext(logoutHandler);
+    std::cout << "What do you want to do : register, login, logout ? ";
+    std::cin >> choice;
+    std::cout << registerHandler->Handle(choice);
 
     delete loginHandler;
     delete logoutHandler;
+    delete registerHandler;
 
     return 0;
 }

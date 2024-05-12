@@ -8,6 +8,8 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
+                "${fileDirname}/registerhandler.hpp",
+                "${fileDirname}/registerhandler.cpp",
                 "${fileDirname}/abstractuserhandler.hpp",
                 "${fileDirname}/loginhandler.hpp",
                 "${fileDirname}/loginhandler.cpp",
