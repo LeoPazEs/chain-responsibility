@@ -1,5 +1,5 @@
 #include <string>
-#ifndef HANDLER_H
+#if !defined(HANDLER_H)
 #define HANDLER_H
 class Handler
 {
